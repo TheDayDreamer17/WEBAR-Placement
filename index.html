@@ -19,13 +19,14 @@
         onsuccess();
       }
     }
-    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Base-build.json", { onProgress: UnityProgress });
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build2.json", { onProgress: UnityProgress });
   </script>
 </head>
 
 <body>
   <div class="webgl-content">
     <div id="unityContainer" style="width: 700px; height: 400px"></div>
+	<div id="unityContainer" ></div>
     <div class="footer">
       <div class="webgl-logo"></div>
       <!--<button class="entervr" id="entervr" value="Enter VR" disabled>VR</button>-->
@@ -35,16 +36,22 @@
   </div>
   <script>
     let enterARButton = document.getElementById('enterar');
-	
+    //let enterVRButton = document.getElementById('entervr');
+
     document.addEventListener('onARSupportedCheck', function (event) {
       enterARButton.disabled = !event.detail.supported;
     }, false);
+    //document.addEventListener('onVRSupportedCheck', function (event) {
+    //  enterVRButton.disabled = !event.detail.supported;
+    //}, false);
 
     enterARButton.addEventListener('click', function (event) {
       document.dispatchEvent(new CustomEvent('toggleAR', {}));
     }, false);
-    enterARButton.click(); 
-    
+    //enterVRButton.addEventListener('click', function (event) {
+    // document.dispatchEvent(new CustomEvent('toggleVR', {}));
+    //}, false);
+	enterARButton.click();
   </script>
   <script src="gl-matrix-min.js"></script>
   <script src="webxr.js"></script>
